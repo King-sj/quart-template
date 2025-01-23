@@ -1,0 +1,11 @@
+{
+  "cSpell.words": [
+    "asyncio",
+    "Hypercorn",
+    "jsonify",
+    "pytest"
+  ],
+  "python.testing.pytestArgs": ["tests"],
+  "python.testing.pytestEnabled": true,
+  "python.testing.unittestEnabled": false,
+}
