@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quart-template write by KSJ</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .header {
+      background-color: #007BFF;
+      color: #ffffff;
+      padding: 10px 20px;
+      text-align: center;
+      font-size: 24px;
+    }
+
+    .body {
+      padding: 20px;
+      text-align: left;
+      line-height: 1.5;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 10px 20px;
+      font-size: 12px;
+      background-color: #eeeeee;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="header">
+      欢迎使用我们的服务
+    </div>
+    <div class="body">
+      尊敬的{{user}}: <br>
+      {{msg|safe}}
+      <br><br>
+      感谢您选择我们的产品和服务。我们致力于为您提供最高质量的体验。<br>
+      如果您有任何问题或需要帮助，请不要犹豫，直接回复这封邮件，我们很乐意帮助您解决任何问题。<br><br>
+      此致敬礼,<br>
+      [placehold]
+    </div>
+    <div class="footer">
+      版权所有 &copy; [2024] [placehold]. 所有权利保留。
+    </div>
+  </div>
+</body>
+
+</html>

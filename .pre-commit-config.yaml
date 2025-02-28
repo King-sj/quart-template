@@ -1,0 +1,52 @@
+repos:
+  # 基础代码检查套件
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0
+    hooks:
+      - id: trailing-whitespace    # 删除行尾空格[1,4](@ref)
+      - id: end-of-file-fixer      # 自动修复文件末尾空行[1](@ref)
+      - id: check-yaml             # 验证YAML格式[4](@ref)
+      - id: check-added-large-files # 拦截大文件提交[4](@ref)
+      - id: detect-private-key     # 检测私钥文件[3](@ref)
+
+  # Python代码格式化
+  - repo: https://github.com/psf/black
+    rev: 24.4.0
+    hooks:
+      - id: black
+        args: [--safe, --quiet]    # 静默模式运行[1](@ref)
+
+  # 代码质量检查
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.4.7
+    hooks:
+      - id: ruff
+        args: [--fix, --exit-non-zero-on-fix]  # 自动修复代码[1](@ref)
+
+  # 依赖安全检查
+  - repo: https://github.com/Yelp/detect-secrets
+    rev: v1.0.0
+    hooks:
+      - id: detect-secrets         # 敏感信息扫描[3](@ref)
+
+
+  # 自动排序import语句
+  - repo: https://github.com/PyCQA/isort
+    rev: 5.13.2
+    hooks:
+      - id: isort
+        args: [--profile=black]     # 兼容Black格式[2](@ref)
+
+  # 类型检查
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v1.10.0
+    hooks:
+      - id: mypy
+        exclude: ^tests/           # 排除测试目录[1](@ref)
+
+  # 提交信息规范检查
+  - repo: https://github.com/commitizen-tools/commitizen
+    rev: v3.12.0
+    hooks:
+      - id: commitizen
+        stages: [commit-msg]       # 检查提交信息格式[2](@ref)

@@ -129,6 +129,9 @@ celerybeat.pid
 
 # Environments
 .env
+.env.dev
+.env.prod
+.env.test
 .venv
 env/
 venv/
@@ -169,3 +172,16 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+
+tmp/
+temp/
+
+.vscode/settings.json
+
+# SQLTools
+*.session.sql
+
+# aerich
+migrations/
+settings.py
