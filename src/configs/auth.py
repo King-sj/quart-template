@@ -27,3 +27,6 @@ class Config:
     # 认证方案: Customize,Basic,Bearer
     self.AUTH_KEY = os.getenv('AUTH_KEY','Authorization')
     self.AUTH_HEADER:str = os.getenv('AUTH_HEADER', 'Customize')
+
+    # 密码加密salt length
+    self.SALT_LENGTH:int = int(os.getenv('SALT_LENGTH', 32))

@@ -1,0 +1,23 @@
+# 用于aeich迁移
+# TODO: 改为从config文件中读取, 保持一致性
+TORTOISE_ORM = {
+    "connections": {
+        "default": {
+            "engine": "tortoise.backends.asyncpg",
+            "credentials": {
+                "host": "localhost",
+                "port": "5433",
+                "user": "postgres",
+                "password": "12345678",
+                "database": "quart_template",
+                "maxsize": 10  # 设置最大连接数为10
+            }
+        }
+    },
+    "apps": {
+        "models": {
+            "models": ["src.models", "aerich.models"],
+            "default_connection": "default",
+        },
+    },
+}

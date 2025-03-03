@@ -5,8 +5,6 @@ from src.models import User
 from src.controllers.main import main_bp
 from src.types import ApiResponse
 from quart import request
-from src.globals import get_redis
-from src.utils import generate_random_string
 from src.configs import *
 from ..types import CaptchaRequest, RegisterRequest, LoginRequest, RefreshTokenRequest
 # from pydantic import ValidationError

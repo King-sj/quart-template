@@ -4,6 +4,7 @@ from src.configs import AuthConfig, RedisPrefixConfig
 from .token import generate_token_and_store,generate_refresh_token_and_store
 from src.models import User
 from src.utils import SnowFlake
+from ..utils import encrypt_psw
 
 async def register_account(data: RegisterRequest):
   '''
@@ -28,9 +29,10 @@ async def register_account(data: RegisterRequest):
   if user:
     raise Exception('User already exists')
   # 创建用户
+  psw = encrypt_psw(data.psw,cfg.SALT_LENGTH)
   user = User(id=SnowFlake().gen_id(),
               email=data.account,
-              password=data.psw,
+              password=psw,
               role='user',
               name=data.account)
   await user.save()

@@ -10,6 +10,7 @@ from tortoise.contrib.quart import register_tortoise
 from redis import asyncio as aioredis
 from redis.asyncio.client import Redis
 from .globals import init_redis, get_redis, close_redis,Redis
+from src.utils import generate_random_string
 
 def init_check():
   '''
@@ -45,7 +46,7 @@ def create_app():
   register_blueprints(app)
   install_auth_module(app)
 
-  app.redis = None  # type: ignore
+  app.secret_key = generate_random_string(32)
 
   @app.before_serving
   async def before_serving():
