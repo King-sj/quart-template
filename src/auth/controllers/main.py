@@ -9,13 +9,14 @@ from src.configs import *
 from ..types import CaptchaRequest, RegisterRequest, LoginRequest, RefreshTokenRequest
 # from pydantic import ValidationError
 from ..service import register_account, login, logout, refresh_token, generate_and_store_captcha
-
+from  src.decorators import validate_request
 
 main_bp = Blueprint('auth_main', __name__)
 
 
 @main_bp.post('/captcha')
-async def get_captcha():
+@validate_request(CaptchaRequest)
+async def get_captcha(data: CaptchaRequest):
   '''
   Get a captcha, and store it to redis
 
@@ -27,13 +28,6 @@ async def get_captcha():
     res (str): Captcha
 
   '''
-  data = await request.get_json()
-  try:
-    data = CaptchaRequest(**data)
-  except Exception as e:
-    res = ApiResponse(None, 'request data is not right', 'A0402', repr(e))
-    return jsonify(res.to_dict()), 400
-
   acc_type = data.type
   if acc_type != 'email':
     res = ApiResponse(None, 'Now just support Email', 'A0001')

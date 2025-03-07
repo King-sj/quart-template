@@ -1,4 +1,6 @@
 # TODO
+- 给所有API都使用validate_request
+
 - [ ] 兼容 args 和 ENV 两种方式
 - [ ] 解决多个test并行的问题('cannot perform operation: another operation is in progress',)
 - [ ] 研究为什么 Hypercorn 不能正常使用
